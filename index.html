@@ -241,6 +241,17 @@ hr.soft{border:none;border-top:1px solid var(--border);margin:20px 0;}
     <div class="card">
       <div class="section-title">Фінальні запитання</div>
 
+      <div class="q" id="q-attn_check">
+        <div class="q-text">Це перевірка уважності. Будь ласка, оберіть варіант «Зелений». <span class="required">*</span></div>
+        <div class="choices">
+          <label class="choice" onclick="select(this,'attn_check','Червоний')"><div class="radio-dot"></div><span class="choice-text">Червоний</span></label>
+          <label class="choice" onclick="select(this,'attn_check','Зелений')"><div class="radio-dot"></div><span class="choice-text">Зелений</span></label>
+          <label class="choice" onclick="select(this,'attn_check','Синій')"><div class="radio-dot"></div><span class="choice-text">Синій</span></label>
+          <label class="choice" onclick="select(this,'attn_check','Жовтий')"><div class="radio-dot"></div><span class="choice-text">Жовтий</span></label>
+        </div>
+        <div class="error-msg">Будь ласка, оберіть відповідь</div>
+      </div>
+      
       <div class="q" id="q-importance">
         <div class="q-text">Чи важливо для вас знати, хто оцінив вашу роботу — людина чи AI? <span class="required">*</span></div>
         <div class="choices">
@@ -563,18 +574,19 @@ function matSelect(key, val, dot){
 }
 
 // ── Submit ───────────────────────────────────────────────
-async function submit(){
+function submit(){
   if(!validate(5)) return;
   const btn = document.querySelector('#page-5 .btn');
   btn.disabled = true;
-  btn.textContent = 'Збереження...';
-  try {
-    await fetch(SHEET_URL, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data)
-    });
-  } catch(e){ console.warn('Submit error:', e); }
+  
+  // Відправляємо дані у фоні (без await), не чекаючи відповіді від Google
+  fetch(SHEET_URL, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  }).catch(e => console.warn('Submit error:', e));
+
+  // Миттєво перемикаємо на сторінку "Дякуємо"
   cur = 6; showPage(6);
 }
 
