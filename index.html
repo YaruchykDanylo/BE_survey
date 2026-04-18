@@ -62,7 +62,7 @@ html,body{min-height:100vh;background:#12102a;font-family:'Segoe UI',system-ui,s
 .matrix td:not(:first-child){text-align:center}
 .m-radio{width:18px;height:18px;border-radius:50%;border:2px solid rgba(150,120,255,.3);cursor:pointer;transition:all .15s;display:inline-block;vertical-align:middle}
 .m-radio.selected{background:#9966ff;border-color:#9966ff;box-shadow:0 0 8px rgba(150,100,255,.5)}
-.stim-task{font-size:12px;color:rgba(160,140,220,.6);font-style:italic;margin-bottom:10px;line-height:1.5}
+.stim-task{font-size:15px;color:rgba(190,170,240,.9);font-style:italic;margin-bottom:12px;line-height:1.5}
 .stim-work{background:rgba(255,255,255,.07);border:1px solid rgba(180,160,255,.18);border-radius:10px;padding:14px;margin-bottom:12px}
 .stim-work-label{font-size:10px;letter-spacing:1.5px;color:rgba(160,130,255,.5);margin-bottom:6px}
 .stim-work p{font-size:13px;color:#c8c4f0;line-height:1.6;font-style:italic}
@@ -139,7 +139,7 @@ hr.soft{border:none;border-top:1px solid var(--border);margin:20px 0}
       <div class="card-label" data-t="research_label">Дослідження</div>
       <h2 data-t="intro_title">Як студенти сприймають фідбек від AI та від людини?</h2>
       <p data-t="intro_p1">Це дослідження присвячене тому, як люди сприймають та оцінюють навчальний фідбек залежно від його джерела — <strong>людини-викладача</strong> або <strong>штучного інтелекту (AI)</strong>.</p>
-      <p data-t="intro_p2">Ви побачите відповіді учнів на навчальне завдання. До кожної відповіді додано два варіанти фідбеку (A і B). Ваше завдання — визначити, який фідбек надала людина, а який — AI, та оцінити обидва варіанти.</p>
+      <p data-t="intro_p2">Ви побачите відповіді учнів на навчальне завдання. До кожної відповіді додано два варіанти фідбеку (A і B). <strong>Кожен із варіантів може бути написаний як людиною, так і штучним інтелектом (AI).</strong> Ваше завдання — визначити можливе джерело для кожного з них та оцінити обидва варіанти.</p>
       <div class="badges">
         <div class="badge" data-t="badge_time">&#9201; Приблизно 8–10 хвилин</div>
         <div class="badge" data-t="badge_anon">&#128274; Анонімно</div>
@@ -280,7 +280,7 @@ const TRANS = {
     research_label:'Дослідження',
     intro_title:'Як студенти сприймають фідбек від AI та від людини?',
     intro_p1:'Це дослідження присвячене тому, як люди сприймають та оцінюють навчальний фідбек залежно від його джерела — <strong>людини-викладача</strong> або <strong>штучного інтелекту (AI)</strong>.',
-    intro_p2:'Ви побачите відповіді учнів на навчальне завдання. До кожної відповіді додано два варіанти фідбеку (A і B). Ваше завдання — визначити, який фідбек надала людина, а який — AI, та оцінити обидва варіанти.',
+    intro_p2:'Ви побачите відповіді учнів на навчальне завдання. До кожної відповіді додано два варіанти фідбеку (A і B). <strong>Кожен із варіантів може бути написаний як людиною, так і штучним інтелектом (AI).</strong> Ваше завдання — визначити можливе джерело для кожного з них та оцінити обидва варіанти.',
     badge_time:'⏱ Приблизно 8–10 хвилин', badge_anon:'🔒 Анонімно', badge_vol:'✓ Добровільна участь',
     kse_tag:'Дослідження проводиться в рамках навчального проєкту <strong>Kyiv School of Economics</strong>.',
     consent:'Натискаючи «Далі», ви підтверджуєте свою згоду на участь. Дані використовуватимуться виключно в наукових цілях.',
@@ -479,7 +479,7 @@ function mkMatrix(key,label,rows){
 }
 function stimHeader(work,fbA,fbB,introClass,introTitle,introP,taskLabel,taskText,workLabel,fbALabel,fbBLabel,scoreWord){
   return '<div class="'+introClass+'"><strong>'+introTitle+'</strong><p>'+introP+'</p></div>'+
-    '<div class="stim-task"><strong style="color:rgba(160,130,255,.6);font-size:10px;letter-spacing:1.5px;font-style:normal">'+taskLabel+'</strong><br>'+taskText+'</div>'+
+    '<div class="stim-task"><strong style="color:rgba(160,130,255,.6);font-size:13px;letter-spacing:1.5px;font-style:normal">'+taskLabel+'</strong><br>'+taskText+'</div>'+
     '<div class="stim-work"><div class="stim-work-label">'+workLabel+'</div><p>'+work+'</p></div>'+
     '<div class="stim-feedbacks">'+
     '<div class="stim-fb a"><div class="stim-fb-label">'+fbALabel+'</div><p><strong>'+scoreWord+': '+fbA.score+'</strong><br>'+fbA.text+'</p></div>'+
